@@ -1,7 +1,8 @@
 # Created by Joshua Finley
 # Note this only works if there is 1 .jpg URL on each file
 
-import urllib.request as webrq
+import urllib.request
+import urllib.error
 import sys
 import os.path
 
@@ -40,7 +41,11 @@ with open(file_name, "r") as f:
             url = line[http_index:jpg_index + 4]
             print("Retrieving image from url: {0}".format(url))
             # Download the image with image number
-            webrq.urlretrieve(url, str(image_num) + "-image.jpg")
+            try:
+                urllib.request.urlretrieve(url, str(image_num) + "-image.jpg")
+            except urllib.error.HTTPError as err:
+                print(err)
+                print("Unable to retrieve image from: {0}".format(url))
             if found_image is False:
                 found_image = True
 
