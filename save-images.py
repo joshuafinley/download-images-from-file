@@ -12,7 +12,10 @@ if len(sys.argv) < 2:
 
 file_name = sys.argv[1]
 if os.path.isfile(file_name) is False:
-    print("Error finding file named: \"{0}\"".format(file_name))
+    if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+        print("USAGE: \npython3 save-images.py URLS-FILENAME")
+    else:
+        print("Error finding file named: \"{0}\"".format(file_name))
     exit()
 
 # Open the file
