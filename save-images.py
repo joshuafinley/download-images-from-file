@@ -1,5 +1,5 @@
 # Created by Joshua Finley
-# Note this only works if there is 1 .jpg URL on each file
+# Note this only works if there is 1 .jpg URL on each line
 
 import urllib.request
 import urllib.error
